@@ -1,1 +1,0 @@
-# centos-serve--emulator
