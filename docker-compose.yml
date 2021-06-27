@@ -1,12 +1,28 @@
 version: '3.9'
 
 networks:
+    jenkins:
     frontend:
         driver: bridge
     backend:
         driver: bridge
 
 services:
+    nginx:
+        container_name: nginx
+        build:
+            context: ./nginx
+        restart: always
+        networks:
+            - frontend
+            - backend
+            - jenkins
+        ports:
+            - 80:80
+        environment:
+            NGINX_PORT: 80
+            NGINX_HOST: taoqn.vn
+
     redis:
         image: redis:alpine
         container_name: redis
@@ -51,6 +67,8 @@ services:
     jenkins:
         build:
             context: ./jenkins
+        networks:
+            - jenkins
         ports:
             - 8555:8080
             - 50000:50000
