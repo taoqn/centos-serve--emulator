@@ -18,7 +18,7 @@ services:
             - backend
             - jenkins
         ports:
-            - 80:80
+            - 8080:80
         environment:
             NGINX_PORT: 80
             NGINX_HOST: taoqn.vn
@@ -65,6 +65,7 @@ services:
             PGDATA: /var/lib/postgresql/data/pgdata
 
     jenkins:
+        container_name: jenkins
         build:
             context: ./jenkins
         networks:
