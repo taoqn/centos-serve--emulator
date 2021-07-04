@@ -59,10 +59,9 @@ services:
         networks:
             - backend
         volumes:
-            - ./postgres:/var/lib/postgresql/data
+            - ./postgres:/var/lib/postgresql
         environment:
             POSTGRES_PASSWORD: 12345678x@X
-            PGDATA: /var/lib/postgresql/data/pgdata
 
     jenkins:
         container_name: jenkins
